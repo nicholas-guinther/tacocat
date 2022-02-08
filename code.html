@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Nicholas Guinther</title>
+    <title>TACO CAT: A Coding Project By Nicholas Guinther</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -39,7 +39,7 @@
                     <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                    <a class="nav-link" target="_blank" href="https://github.com/nicholas-guinther/tacocat">Git Repo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" target="_blank" href="https://www.nicholasguinther.com/">About</a>
@@ -51,22 +51,106 @@
 
 <main class="flex-shrink-0">
     <div class="container py-4 px-5 mt-5">
-        <h2 class="border-1 border-bottom border-dark">The Code for APP NAME</h2>
+        <h2 class="border-1 border-bottom border-dark">The Code for TACO CAT</h2>
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col-lg-8">
                 <pre class="line-numbers">
                     <code class="language-javascript">
-                        // Call HelloWorld
-                        function HelloWorld(){
-                             alert("Hello World!");
+                        // Get the String from the page
+                        // Controller Function
+                        function getString(){
+                        
+                            document.getElementById("alert").classList.add("invisible");
+                        
+                            let userString = document.getElementById("userString").value;
+                        
+                            // check for palindrome
+                            let returnObj = isPalindrome(userString);
+                        
+                            // display message to the screen
+                            display(returnObj);
                         }
+                        
+                        // Reverse the String
+                        // Logic Function
+                        function isPalindrome(userString){
+                        
+                            userString = userString.toLowerCase();
+                        
+                            // remove spaces and special characters
+                            let regex = /[^a-z0-9]/gi;
+                            userString = userString.replace(regex, "")
+                        
+                            let revString = [];
+                        
+                            let returnObj = {
+                                msg: "",
+                                reversed: ""
+                            };
+                        
+                            for (let index = userString.length - 1; index >= 0; index--) {
+                        
+                                revString += userString[index];
+                            }
+                        
+                            returnObj.reversed = revString;
+                        
+                            if (revString == userString){
+                                returnObj.msg = "Well done! You entered a Palindrome!";
+                            } else {
+                                returnObj.msg = "Sorry! You did not enter a Palindrome!";
+                            }
+                        
+                            
+                        
+                            return returnObj
+                        }
+                        
+                        // Display the Reversed String
+                        // View Function
+                        function display(returnObj){
+                        
+                            document.getElementById("alertHeading").innerHTML = returnObj.msg;
+                            document.getElementById("msg").innerHTML = `Your phrase reversed is: <strong>${returnObj.reversed}</strong>`;
+                        
+                            // Show the alert box
+                            document.getElementById("alert").classList.remove("invisible");
+                        
+                        }
+                        
+                        function clear(){
+                        
+                            document.getElementById("userString").value = "";
+                            document.getElementById("alert").classList.add("invisible");
+                        }
+                        
                     </code>
                 </pre>
             </div>
             <div class="col-lg-4">
-                <p>The Code is structured in one function.</p>
-                <h5>Hello World</h5>
-                <p>Hello World is a function that displays and alert with a message of "Hello World!"</p>
+                <p>The Code is structured in four functions.</p>
+                <h5>getString()</h5>
+                <p>Get String is the controller function. It is responsible for making sure the alert is set to 
+                    invisible, getting the user input from the page, assigning it to the userString variable, passing
+                     the variable to the isPalindrome logic function and assigning the result to a new return Object,
+                     and lastly calling the display function to show the result to the user.</p>
+                <h5>isPalindrome(userString)</h5>
+                <p>Revers String is the logic function. It takes one parameter which is the string entered by the user.
+                    The first step in this function is to clean up the user input and remove any special characters. This
+                    is accomplished by creating a regex variable that contains the acceptable characters and using the replace
+                    method against the user string to replace all special characters with an empty string. 
+                    The function then creates and empty array to store the reversed version of the input string and an object to hold
+                     the message string and the reversed string. A for loop is then used to start at the last position of 
+                     the user string and work backwards adding each letter to the reversed string array. Once the loop concludes the 
+                     reversed string is compared to the user string. Depending on if they match or not will determine what message
+                     is added to the return Object. The return object is then returned.</p>
+                <h5>display(returnObj)</h5>
+                <p>Display String is the View function. It takes one parameter which is the return object created by
+                     the isPalindrome(userString) function. The function then adds the two class attributes, which are the message and
+                      the userString to the alert box and removes the invisible class from the class list making the alert box visible.</p>
+                <h5>clear()</h5>
+                <p>The clear function takes not parameters. It is responsible for clearing the input field 
+                    and making the alert box invisible again.</p>
             </div>
         </div>
     </div>

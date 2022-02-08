@@ -5,6 +5,7 @@
     --white-color: #f8faf8;
     --orange-color: #ec6b25;
     --purple-color: #9c79e4;
+    --red-color: #BD1E2D;
 }
 
 body{
@@ -13,7 +14,7 @@ body{
 
 
 .btn:hover{
-    background-color: var(--orange-color);
+    background-color: var(--red-color);
     
 }
 
@@ -23,12 +24,12 @@ nav{
 }
 
 .navbar-dark .navbar-nav .nav-link.active {
-    color: var(--orange-color);
+    color: var(--red-color);
     font-weight: bold;
 }
 
 .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
-    color: var(--orange-color);
+    color: var(--red-color);
 }
 
 footer{
@@ -43,7 +44,7 @@ footer .social>a{
 
 footer .social>a:hover{
     opacity: 0.90;
-    color: var(--orange-color);
+    color: var(--red-color);
 }
 
 main>.container {
@@ -80,5 +81,18 @@ code[class*="language-"],
             word-wrap: break-word;
 }
 .checklist >li i{
-    color:var(--orange-color)
+    color:var(--red-color)
+}
+
+.alert-red {
+    color: var(--white-color);
+    background-color: var(--red-color);
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: var(--red-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(189 30 45 / 25%);
 }
